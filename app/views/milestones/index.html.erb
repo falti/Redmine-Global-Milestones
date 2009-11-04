@@ -1,0 +1,15 @@
+<% @projects.each do |p| -%>
+    <h2><%=h p.name %></h2>
+	
+	<div>
+		<%= render :partial => "news", :locals => { :news => news_for_project(p) } %>
+	</div>
+	
+	<div>
+	<h3>Milestones</h3>
+	<%= render :partial => "milestone", :locals => { :milestones => p.versions.sort} %>
+	</div>
+	
+	
+	
+<% end -%>
