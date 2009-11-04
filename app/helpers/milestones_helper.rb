@@ -1,5 +1,4 @@
 module MilestonesHelper
-  STATUS_BY_CRITERIAS = %w(category tracker priority author assigned_to)
   STATUS = %w(green yellow red)
   
   def render_project_status(summary)
