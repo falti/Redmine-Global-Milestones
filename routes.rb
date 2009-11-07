@@ -1,0 +1,1 @@
+map.connect 'milestones.:format', :controller => 'milestones', :action => 'index'

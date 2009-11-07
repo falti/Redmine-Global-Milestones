@@ -2,10 +2,14 @@ module MilestonesHelper
   STATUS = %w(green yellow red)
   
   def render_project_status(summary)
+    render :partial=>"status", :locals => {:status => current_project_status(summary) }
+  end
+  
+  
+  def current_project_status(summary)
     summary.downcase!
     status = "green" unless STATUS.include?(summary)
     status ||= summary
-    render :partial=>"status", :locals => {:status => status}
   end
   
   
