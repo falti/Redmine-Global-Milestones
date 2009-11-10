@@ -1,7 +1,6 @@
 <% if news then %>
-<p><%= render_project_status(news.summary) %></p>
 <h3><%= news.title %> - created on <%= news.created_on.to_date %></h3>
-<p><%= news.description %></p>
+<p><%= textilizable(news.description) %></p>
 <% else %>
 	<p>No Project Status available!</p>
 <% end %>

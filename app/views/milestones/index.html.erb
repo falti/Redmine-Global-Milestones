@@ -1,15 +1,26 @@
+<% content_for :header_tags do %>
+	<style type="text/css">
+	table#statustable { border:solid 1px black;}
+	tr.statusrow > td { vertical-align: top; border:solid 1px black; }
+	</style>
+<% end %>
+
+<table id="statustable">
+	
 <% @projects.each do |p| -%>
-    <h2><%=h p.name %></h2>
-	
-	<div>
-		<%= render :partial => "news", :locals => { :news => news_for_project(p) } %>
-	</div>
-	
-	<div>
-	<h3>Milestones</h3>
-	<%= render :partial => "milestone", :locals => { :milestones => p.versions.sort} %>
-	</div>
-	
-	
-	
+	<tr class="statusrow">
+		<td>
+			<% news = news_for_project(p) %>
+			<% if news %>
+				<%= render_project_status(news.summary) %>
+			<% else %>
+				-
+			<% end %>
+		</td>
+		<td><%=h p.name %></td>
+    	<td><%= render :partial => "news", :locals => { :news => news } %></td>
+		<td><%= render :partial => "milestone", :locals => { :milestones => p.versions.sort} %></td>
+	</tr>
 <% end -%>
+
+</table>
